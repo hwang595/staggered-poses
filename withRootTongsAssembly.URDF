@@ -1,0 +1,271 @@
+<robot
+  name="TongsAssembly">
+     <link name="base_link">
+    <visual>
+      <geometry>
+        <cylinder length="0.6" radius="0.2"/>
+      </geometry>
+    </visual>
+  </link>
+   <link
+    name="upperArm">
+    <inertial>
+      <origin
+        xyz="0.00297567120199671 0.0853878814073256 -0.00862088652069861"
+        rpy="0 0 0" />
+      <mass
+        value="0.139400501380177" />
+      <inertia
+        ixx="0.000882802861618243"
+        ixy="1.23613360640711E-05"
+        ixz="1.4860000815208E-06"
+        iyy="6.49605900801355E-05"
+        iyz="0.00014434958190853"
+        izz="0.000873465903204914" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://TongsAssembly/meshes/upperArm.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://TongsAssembly/meshes/upperArm.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="lowerArm">
+    <inertial>
+      <origin
+        xyz="0.0932935802435993 -0.0182967976139862 -0.00985190534468753"
+        rpy="0 0 0" />
+      <mass
+        value="0.135912406697885" />
+      <inertia
+        ixx="5.47410148730463E-05"
+        ixy="7.61042909792833E-05"
+        ixz="-6.10816037298214E-05"
+        iyy="0.00096272025337432"
+        iyz="-6.92867875519366E-06"
+        izz="0.000999152121012127" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://TongsAssembly/meshes/lowerArm.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://TongsAssembly/meshes/lowerArm.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="pivot"
+    type="revolute">
+    <origin
+      xyz="-0.008 -0.0057925 -0.039737"
+      rpy="-6.9516E-15 7.2164E-16 1.5708" />
+    <parent
+      link="upperArm" />
+    <child
+      link="lowerArm" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-3.25"
+      upper="3.15"
+      effort="0"
+      velocity="30" />
+  </joint>
+  <link
+    name="lowerForceSensor">
+    <inertial>
+      <origin
+        xyz="-1.70052306309454E-05 -3.04299992565094E-08 0.000448571768620259"
+        rpy="0 0 0" />
+      <mass
+        value="0.0224729871693277" />
+      <inertia
+        ixx="3.66805285197596E-06"
+        ixy="2.00772894539084E-11"
+        ixz="5.68095997939769E-09"
+        iyy="3.8693957352167E-06"
+        iyz="1.59570333562469E-11"
+        izz="5.51839350126669E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://TongsAssembly/meshes/lowerForceSensor.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://TongsAssembly/meshes/lowerForceSensor.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="lowerForceFix"
+    type="fixed">
+    <origin
+      xyz="0.230499999999989 -0.0129999999999877 -0.00199999999999988"
+      rpy="7.97399569435949E-15 -1.38777878078186E-15 5.92206749918726E-14" />
+    <parent
+      link="lowerArm" />
+    <child
+      link="lowerForceSensor" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="upperForceSensor">
+    <inertial>
+      <origin
+        xyz="-1.70038998784372E-05 -3.05428322008861E-08 0.000448570919953498"
+        rpy="0 0 0" />
+      <mass
+        value="0.0224729845943864" />
+      <inertia
+        ixx="3.66805327238753E-06"
+        ixy="2.01983108592898E-11"
+        ixz="5.68122813903441E-09"
+        iyy="3.86939480584033E-06"
+        iyz="1.59427723811972E-11"
+        izz="5.51839334690425E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://TongsAssembly/meshes/upperForceSensor.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://TongsAssembly/meshes/upperForceSensor.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="UpperForceFix"
+    type="fixed">
+    <origin
+      xyz="0.004 0.22086 0.0022588"
+      rpy="-3.1416 -0.17453 1.5708" />
+    <parent
+      link="upperArm" />
+    <child
+      link="upperForceSensor" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="UW">
+    <inertial>
+      <origin
+        xyz="-2.01464120579038E-05 0.0124522022707175 -0.0167308323289785"
+        rpy="0 0 0" />
+      <mass
+        value="0.00131998952523542" />
+      <inertia
+        ixx="7.2002991449803E-08"
+        ixy="6.2317273119789E-12"
+        ixz="1.1204295900404E-11"
+        iyy="7.24243662977735E-08"
+        iyz="-3.25292525971048E-08"
+        izz="5.54012865113145E-08" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://TongsAssembly/meshes/UW.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://TongsAssembly/meshes/UW.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="uwFix"
+    type="fixed">
+    <origin
+      xyz="0.00399999999999995 0.130924525935847 0.00264782009294092"
+      rpy="1.08071119349374 -3.21868668593827E-18 4.43663689353788E-18" />
+    <parent
+      link="upperArm" />
+    <child
+      link="UW" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <joint name="odem" type="fixed">
+    <parent link="base_link"/>
+    <child link="upperArm"/>
+  </joint>
+</robot>
